@@ -37,10 +37,7 @@ namespace TestMM
             this.caNeighborhoodComboBox = new System.Windows.Forms.ComboBox();
             this.caAddRandomGrainsButton = new System.Windows.Forms.Button();
             this.caSimulateButton = new System.Windows.Forms.Button();
-            this.NextStep_Button = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
-            this.SelectButton = new System.Windows.Forms.Button();
-            this.DPcheckBox = new System.Windows.Forms.CheckBox();
             this.gridPeriodicCheckBox = new System.Windows.Forms.CheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
@@ -50,11 +47,17 @@ namespace TestMM
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.maxRnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.minRnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.InclusionsNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.button5 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.Board)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardWidthNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardHeightNumericUpDown)).BeginInit();
@@ -64,12 +67,14 @@ namespace TestMM
             ((System.ComponentModel.ISupportInitialize)(this.maxRnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minRnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InclusionsNumericUpDown)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // Board
             // 
             this.Board.BackColor = System.Drawing.Color.White;
-            this.Board.Location = new System.Drawing.Point(160, 82);
+            this.Board.Location = new System.Drawing.Point(154, 91);
             this.Board.Name = "Board";
             this.Board.Size = new System.Drawing.Size(367, 336);
             this.Board.TabIndex = 0;
@@ -78,7 +83,7 @@ namespace TestMM
             // 
             // BoardWidthNumericUpDown
             // 
-            this.BoardWidthNumericUpDown.Location = new System.Drawing.Point(38, 15);
+            this.BoardWidthNumericUpDown.Location = new System.Drawing.Point(59, 15);
             this.BoardWidthNumericUpDown.Maximum = new decimal(new int[] {
             500,
             0,
@@ -95,7 +100,7 @@ namespace TestMM
             // 
             // BoardHeightNumericUpDown
             // 
-            this.BoardHeightNumericUpDown.Location = new System.Drawing.Point(38, 47);
+            this.BoardHeightNumericUpDown.Location = new System.Drawing.Point(59, 55);
             this.BoardHeightNumericUpDown.Maximum = new decimal(new int[] {
             500,
             0,
@@ -112,7 +117,7 @@ namespace TestMM
             // 
             // caGrainsNumericUpDown
             // 
-            this.caGrainsNumericUpDown.Location = new System.Drawing.Point(160, 9);
+            this.caGrainsNumericUpDown.Location = new System.Drawing.Point(6, 17);
             this.caGrainsNumericUpDown.Name = "caGrainsNumericUpDown";
             this.caGrainsNumericUpDown.Size = new System.Drawing.Size(74, 20);
             this.caGrainsNumericUpDown.TabIndex = 3;
@@ -126,83 +131,53 @@ namespace TestMM
             "Right Pentagonal",
             "Left Hexagonal",
             "Right Hexagonal"});
-            this.caNeighborhoodComboBox.Location = new System.Drawing.Point(230, 49);
+            this.caNeighborhoodComboBox.Location = new System.Drawing.Point(469, 20);
             this.caNeighborhoodComboBox.Name = "caNeighborhoodComboBox";
             this.caNeighborhoodComboBox.Size = new System.Drawing.Size(121, 21);
             this.caNeighborhoodComboBox.TabIndex = 24;
-            this.caNeighborhoodComboBox.SelectedIndexChanged += new System.EventHandler(this.caNeighborhoodComboBox_SelectedIndexChanged);
             // 
             // caAddRandomGrainsButton
             // 
-            this.caAddRandomGrainsButton.Location = new System.Drawing.Point(260, 6);
+            this.caAddRandomGrainsButton.Location = new System.Drawing.Point(108, 25);
             this.caAddRandomGrainsButton.Name = "caAddRandomGrainsButton";
-            this.caAddRandomGrainsButton.Size = new System.Drawing.Size(91, 23);
+            this.caAddRandomGrainsButton.Size = new System.Drawing.Size(64, 30);
             this.caAddRandomGrainsButton.TabIndex = 6;
-            this.caAddRandomGrainsButton.Text = "Dodaj Ziarno";
+            this.caAddRandomGrainsButton.Text = "Add ";
             this.caAddRandomGrainsButton.UseVisualStyleBackColor = true;
             this.caAddRandomGrainsButton.Click += new System.EventHandler(this.caAddRandomGrainsButton_Click);
             // 
             // caSimulateButton
             // 
-            this.caSimulateButton.Location = new System.Drawing.Point(373, 47);
+            this.caSimulateButton.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.caSimulateButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.caSimulateButton.Location = new System.Drawing.Point(363, 17);
             this.caSimulateButton.Name = "caSimulateButton";
-            this.caSimulateButton.Size = new System.Drawing.Size(75, 23);
+            this.caSimulateButton.Size = new System.Drawing.Size(100, 30);
             this.caSimulateButton.TabIndex = 7;
             this.caSimulateButton.Text = "Start";
-            this.caSimulateButton.UseVisualStyleBackColor = true;
+            this.caSimulateButton.UseVisualStyleBackColor = false;
             this.caSimulateButton.Click += new System.EventHandler(this.caSimulateButton_Click);
-            // 
-            // NextStep_Button
-            // 
-            this.NextStep_Button.Location = new System.Drawing.Point(471, 47);
-            this.NextStep_Button.Name = "NextStep_Button";
-            this.NextStep_Button.Size = new System.Drawing.Size(73, 23);
-            this.NextStep_Button.TabIndex = 8;
-            this.NextStep_Button.Text = "Kolejny Step";
-            this.NextStep_Button.UseVisualStyleBackColor = true;
             // 
             // ResetButton
             // 
-            this.ResetButton.Location = new System.Drawing.Point(498, 9);
+            this.ResetButton.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.ResetButton.Location = new System.Drawing.Point(363, 51);
             this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(75, 23);
+            this.ResetButton.Size = new System.Drawing.Size(100, 30);
             this.ResetButton.TabIndex = 9;
             this.ResetButton.Text = "Reset";
-            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.UseVisualStyleBackColor = false;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
-            // 
-            // SelectButton
-            // 
-            this.SelectButton.BackColor = System.Drawing.SystemColors.Control;
-            this.SelectButton.Location = new System.Drawing.Point(416, 6);
-            this.SelectButton.Name = "SelectButton";
-            this.SelectButton.Size = new System.Drawing.Size(76, 23);
-            this.SelectButton.TabIndex = 22;
-            this.SelectButton.Text = "Select";
-            this.SelectButton.UseVisualStyleBackColor = false;
-            // 
-            // DPcheckBox
-            // 
-            this.DPcheckBox.AutoSize = true;
-            this.DPcheckBox.Checked = true;
-            this.DPcheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.DPcheckBox.Location = new System.Drawing.Point(33, 82);
-            this.DPcheckBox.Name = "DPcheckBox";
-            this.DPcheckBox.Size = new System.Drawing.Size(81, 17);
-            this.DPcheckBox.TabIndex = 23;
-            this.DPcheckBox.Text = "Dual-Phase";
-            this.DPcheckBox.UseVisualStyleBackColor = true;
             // 
             // gridPeriodicCheckBox
             // 
             this.gridPeriodicCheckBox.AutoSize = true;
-            this.gridPeriodicCheckBox.Location = new System.Drawing.Point(124, 47);
+            this.gridPeriodicCheckBox.Location = new System.Drawing.Point(160, 53);
             this.gridPeriodicCheckBox.Name = "gridPeriodicCheckBox";
             this.gridPeriodicCheckBox.Size = new System.Drawing.Size(84, 17);
             this.gridPeriodicCheckBox.TabIndex = 25;
             this.gridPeriodicCheckBox.Text = "Periodyczne";
             this.gridPeriodicCheckBox.UseVisualStyleBackColor = true;
-            this.gridPeriodicCheckBox.CheckedChanged += new System.EventHandler(this.gridPeriodicCheckBox_CheckedChanged);
             // 
             // timer1
             // 
@@ -211,7 +186,7 @@ namespace TestMM
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(32, 30);
+            this.button1.Location = new System.Drawing.Point(21, 32);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(99, 30);
             this.button1.TabIndex = 26;
@@ -227,14 +202,14 @@ namespace TestMM
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(8, 257);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(146, 181);
+            this.groupBox1.Size = new System.Drawing.Size(140, 180);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Save";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(30, 138);
+            this.button4.Location = new System.Drawing.Point(21, 140);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(99, 30);
             this.button4.TabIndex = 29;
@@ -243,7 +218,7 @@ namespace TestMM
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(32, 104);
+            this.button3.Location = new System.Drawing.Point(21, 104);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(99, 30);
             this.button3.TabIndex = 28;
@@ -253,7 +228,7 @@ namespace TestMM
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(32, 68);
+            this.button2.Location = new System.Drawing.Point(21, 68);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(99, 30);
             this.button2.TabIndex = 27;
@@ -263,31 +238,51 @@ namespace TestMM
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.checkBox1);
             this.groupBox2.Controls.Add(this.maxRnumericUpDown);
             this.groupBox2.Controls.Add(this.minRnumericUpDown);
             this.groupBox2.Controls.Add(this.InclusionsNumericUpDown);
             this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Location = new System.Drawing.Point(14, 105);
+            this.groupBox2.Location = new System.Drawing.Point(8, 121);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(140, 146);
+            this.groupBox2.Size = new System.Drawing.Size(140, 130);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Inclusions";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(72, 84);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "R Max";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 84);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "R Min";
+            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(1, 57);
+            this.checkBox1.Location = new System.Drawing.Point(16, 60);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(46, 17);
+            this.checkBox1.Size = new System.Drawing.Size(94, 17);
             this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Rec";
+            this.checkBox1.Text = "Rectangle ON";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // maxRnumericUpDown
             // 
-            this.maxRnumericUpDown.Location = new System.Drawing.Point(26, 120);
+            this.maxRnumericUpDown.Location = new System.Drawing.Point(70, 100);
             this.maxRnumericUpDown.Name = "maxRnumericUpDown";
             this.maxRnumericUpDown.Size = new System.Drawing.Size(40, 20);
             this.maxRnumericUpDown.TabIndex = 3;
@@ -299,7 +294,7 @@ namespace TestMM
             // 
             // minRnumericUpDown
             // 
-            this.minRnumericUpDown.Location = new System.Drawing.Point(26, 94);
+            this.minRnumericUpDown.Location = new System.Drawing.Point(12, 100);
             this.minRnumericUpDown.Name = "minRnumericUpDown";
             this.minRnumericUpDown.Size = new System.Drawing.Size(41, 20);
             this.minRnumericUpDown.TabIndex = 2;
@@ -311,20 +306,62 @@ namespace TestMM
             // 
             // InclusionsNumericUpDown
             // 
-            this.InclusionsNumericUpDown.Location = new System.Drawing.Point(0, 22);
+            this.InclusionsNumericUpDown.Location = new System.Drawing.Point(4, 24);
             this.InclusionsNumericUpDown.Name = "InclusionsNumericUpDown";
             this.InclusionsNumericUpDown.Size = new System.Drawing.Size(47, 20);
             this.InclusionsNumericUpDown.TabIndex = 1;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(53, 19);
+            this.button5.Location = new System.Drawing.Point(59, 21);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 0;
             this.button5.Text = "Add Inc";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.addInclusionButton);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.BoardHeightNumericUpDown);
+            this.groupBox3.Controls.Add(this.BoardWidthNumericUpDown);
+            this.groupBox3.Location = new System.Drawing.Point(8, 9);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(140, 106);
+            this.groupBox3.TabIndex = 29;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Size";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Width";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Height";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.caGrainsNumericUpDown);
+            this.groupBox4.Controls.Add(this.caAddRandomGrainsButton);
+            this.groupBox4.Location = new System.Drawing.Point(154, 9);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(191, 70);
+            this.groupBox4.TabIndex = 30;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Add Grains";
             // 
             // Main
             // 
@@ -334,19 +371,14 @@ namespace TestMM
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gridPeriodicCheckBox);
-            this.Controls.Add(this.DPcheckBox);
-            this.Controls.Add(this.SelectButton);
             this.Controls.Add(this.ResetButton);
-            this.Controls.Add(this.NextStep_Button);
             this.Controls.Add(this.caSimulateButton);
-            this.Controls.Add(this.caAddRandomGrainsButton);
             this.Controls.Add(this.caNeighborhoodComboBox);
-            this.Controls.Add(this.caGrainsNumericUpDown);
-            this.Controls.Add(this.BoardHeightNumericUpDown);
-            this.Controls.Add(this.BoardWidthNumericUpDown);
             this.Controls.Add(this.Board);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox4);
             this.Name = "Main";
-            this.Text = "Form1";
+            this.Text = "KK Form";
             ((System.ComponentModel.ISupportInitialize)(this.Board)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardWidthNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardHeightNumericUpDown)).EndInit();
@@ -357,6 +389,9 @@ namespace TestMM
             ((System.ComponentModel.ISupportInitialize)(this.maxRnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minRnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InclusionsNumericUpDown)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,10 +406,7 @@ namespace TestMM
         private System.Windows.Forms.ComboBox caNeighborhoodComboBox;
         private System.Windows.Forms.Button caAddRandomGrainsButton;
         private System.Windows.Forms.Button caSimulateButton;
-        private System.Windows.Forms.Button NextStep_Button;
         private System.Windows.Forms.Button ResetButton;
-        private System.Windows.Forms.Button SelectButton;
-        private System.Windows.Forms.CheckBox DPcheckBox;
         private System.Windows.Forms.CheckBox gridPeriodicCheckBox;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button1;
@@ -389,6 +421,12 @@ namespace TestMM
         private System.Windows.Forms.NumericUpDown minRnumericUpDown;
         private System.Windows.Forms.NumericUpDown InclusionsNumericUpDown;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }
 

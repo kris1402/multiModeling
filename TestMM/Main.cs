@@ -57,10 +57,10 @@ namespace TestMM
         //    get { return (int)this.GBCnumericUpDown.Value; }
         //}
 
-        private bool DPcheck
+        /*private bool DPcheck
         {
             get { return this.DPcheckBox.Checked; }
-        }
+        }*/
 
         private Grid grid;
         private AlgorithmCA ca;
@@ -173,7 +173,7 @@ namespace TestMM
 
         private void SelectGrain_Start()
         {
-            this.ca.StartSelectGrains(this.DPcheck);
+            //this.ca.StartSelectGrains(this.DPcheck);
             this.ca.StartSelectGrains(true);
         }
 
@@ -216,15 +216,8 @@ namespace TestMM
         //    }
         //}
 
-        private void caNeighborhoodComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
-        private void gridPeriodicCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -249,7 +242,7 @@ namespace TestMM
             if (sf.ShowDialog() == DialogResult.OK)
             {
                 bmp.Save(sf.FileName, ImageFormat.Bmp);
-                MessageBox.Show("Plik zostal pomyslnie zapisany");
+                MessageBox.Show("File has been correctly Saved!");
             }
         }
 
@@ -272,7 +265,7 @@ namespace TestMM
                             file.WriteLine(x + "," + y + "," + c.ID);
                         }
                     }
-                MessageBox.Show("Plik zostal pomyslnie zapisany");
+                MessageBox.Show("File has been correctly Saved!");
             }
             
             }
@@ -332,15 +325,13 @@ namespace TestMM
         private void addInclusionButton(object sender, EventArgs e)
         {
 
-            
+
             if (checkBox1.Checked)
             {
-                this.ca.AddRandomInclusionsRec(this.Inclusions, this.InclusionsMinR, this.InclusionsMaxR);
-                MessageBox.Show("OOO");
+                this.ca.AddRandomInclusions(this.Inclusions, this.InclusionsMinR, this.InclusionsMaxR);
             }
             else
-                this.ca.AddRandomInclusions(this.Inclusions, this.InclusionsMinR, this.InclusionsMaxR);
-
+                this.ca.AddRandomInclusionsRec(this.Inclusions, this.InclusionsMinR, this.InclusionsMaxR);
 
             this.Board.Refresh();
         }
