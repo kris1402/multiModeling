@@ -230,5 +230,91 @@ namespace TestMM
         {
             this.Board.Refresh();
         }
+
+        private static Bitmap DrowControlToBitmap(Control control)
+        {
+            Bitmap bitmap = new Bitmap(control.Width, control.Height);
+            Graphics graphics = Graphics.FromImage(bitmap);
+            Rectangle rect = control.RectangleToScreen(control.ClientRectangle);
+            graphics.CopyFromScreen(rect.Location, Point.Empty, control.Size);
+            return bitmap;
+        }
+
+        private void saveBitmap_Click(object sender, EventArgs e)
+        {
+            Bitmap bmp = new Bitmap(Board.ClientSize.Width, Board.ClientSize.Height);
+            Board.DrawToBitmap(bmp, Board.ClientRectangle);
+            SaveFileDialog sf = new SaveFileDialog();
+            sf.Filter = "BMP(*.BMP)|*.bmp";
+            if (sf.ShowDialog() == DialogResult.OK)
+            {
+                bmp.Save(sf.FileName, ImageFormat.Bmp);
+                MessageBox.Show("Plik zostal pomyslnie zapisany");
+            }
+        }
+
+
+        private void save_as_csv_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sf = new SaveFileDialog();
+            sf.Filter = "CSV(*.CSV)|*.csv";
+            if (sf.ShowDialog() == DialogResult.OK)
+            {
+                string filepath = sf.FileName;
+                System.IO.File.WriteAllBytes(filepath, new byte[0]);
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filepath, true))
+                {
+                    for (int x = 0; x < this.grid.Height; ++x)
+                    {
+                        for (int y = 0; y < this.grid.Width; ++y)
+                        {
+                            Cell c = this.grid.GetCell(x, y);
+                            file.WriteLine(x + "," + y + "," + c.ID);
+                        }
+                    }
+                MessageBox.Show("Plik zostal pomyslnie zapisany");
+            }
+            
+            }
+        }
+
+        private void Upload_csv(object sender, EventArgs e)
+        {
+            OpenFileDialog sf = new OpenFileDialog();
+            if (sf.ShowDialog() == DialogResult.OK)
+            {
+                //string path = "board.txt";
+                string path = sf.FileName;
+                string line;
+
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.StreamReader file = null;
+                    try
+                    {
+                        file = new System.IO.StreamReader(path);
+                        while ((line = file.ReadLine()) != null)
+                        {
+                            String[] coordinates = line.Split(',');
+                            int tmp_x = System.Convert.ToInt32(coordinates[0]);
+                            int tmp_y = System.Convert.ToInt32(coordinates[1]);
+                            int tmp_id = System.Convert.ToInt32(coordinates[2]);
+
+                            Cell c = this.grid.GetCell(tmp_x, tmp_y);
+                            c.ID = tmp_id;
+                            c.NewID = tmp_id;
+                        }
+                    }
+                    finally
+                    {
+                        if (file != null)
+                            file.Close();
+                    }
+                }
+                Console.ReadLine();
+                this.Board.Refresh();
+            }
+        
+            }
     }
 }
