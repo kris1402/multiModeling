@@ -58,6 +58,7 @@ namespace TestMM
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Board)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardWidthNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardHeightNumericUpDown)).BeginInit();
@@ -100,7 +101,7 @@ namespace TestMM
             // 
             // BoardHeightNumericUpDown
             // 
-            this.BoardHeightNumericUpDown.Location = new System.Drawing.Point(59, 55);
+            this.BoardHeightNumericUpDown.Location = new System.Drawing.Point(59, 44);
             this.BoardHeightNumericUpDown.Maximum = new decimal(new int[] {
             500,
             0,
@@ -126,12 +127,8 @@ namespace TestMM
             // 
             this.caNeighborhoodComboBox.Items.AddRange(new object[] {
             "Moore",
-            "Von Neumann",
-            "Left Pentagonal",
-            "Right Pentagonal",
-            "Left Hexagonal",
-            "Right Hexagonal"});
-            this.caNeighborhoodComboBox.Location = new System.Drawing.Point(469, 20);
+            "Von Neumann"});
+            this.caNeighborhoodComboBox.Location = new System.Drawing.Point(10, 88);
             this.caNeighborhoodComboBox.Name = "caNeighborhoodComboBox";
             this.caNeighborhoodComboBox.Size = new System.Drawing.Size(121, 21);
             this.caNeighborhoodComboBox.TabIndex = 24;
@@ -245,9 +242,9 @@ namespace TestMM
             this.groupBox2.Controls.Add(this.minRnumericUpDown);
             this.groupBox2.Controls.Add(this.InclusionsNumericUpDown);
             this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Location = new System.Drawing.Point(8, 121);
+            this.groupBox2.Location = new System.Drawing.Point(8, 130);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(140, 130);
+            this.groupBox2.Size = new System.Drawing.Size(140, 121);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Inclusions";
@@ -323,13 +320,15 @@ namespace TestMM
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.BoardHeightNumericUpDown);
             this.groupBox3.Controls.Add(this.BoardWidthNumericUpDown);
+            this.groupBox3.Controls.Add(this.caNeighborhoodComboBox);
             this.groupBox3.Location = new System.Drawing.Point(8, 9);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(140, 106);
+            this.groupBox3.Size = new System.Drawing.Size(140, 115);
             this.groupBox3.TabIndex = 29;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Size";
@@ -346,7 +345,7 @@ namespace TestMM
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1, 59);
+            this.label3.Location = new System.Drawing.Point(4, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 24;
@@ -363,6 +362,15 @@ namespace TestMM
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Add Grains";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 72);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 13);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Method";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -373,7 +381,6 @@ namespace TestMM
             this.Controls.Add(this.gridPeriodicCheckBox);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.caSimulateButton);
-            this.Controls.Add(this.caNeighborhoodComboBox);
             this.Controls.Add(this.Board);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
@@ -427,6 +434,7 @@ namespace TestMM
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label5;
     }
 }
 
