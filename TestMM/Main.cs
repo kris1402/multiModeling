@@ -283,7 +283,6 @@ namespace TestMM
             OpenFileDialog sf = new OpenFileDialog();
             if (sf.ShowDialog() == DialogResult.OK)
             {
-                //string path = "board.txt";
                 string path = sf.FileName;
                 string line;
 
@@ -314,7 +313,8 @@ namespace TestMM
                 Console.ReadLine();
                 this.Board.Refresh();
             }
-        
+
             }
     }
+
 }
