@@ -37,20 +37,20 @@ namespace TestMM
             get { return (int)this.caGrainsNumericUpDown.Value; }
         }
 
-        //private int Inclusions
-        //{
-        //    get { return (int)this.InclusionsNumericUpDown.Value; }
-        //}
+        private int Inclusions
+        {
+            get { return (int)this.InclusionsNumericUpDown.Value; }
+        }
 
-        //private int InclusionsMinR
-        //{
-        //    get { return (int)this.minRnumericUpDown.Value; }
-        //}
+        private int InclusionsMinR
+        {
+            get { return (int)this.minRnumericUpDown.Value; }
+        }
 
-        //private int InclusionsMaxR
-        //{
-        //    get { return (int)this.maxRnumericUpDown.Value; }
-        //}
+        private int InclusionsMaxR
+        {
+            get { return (int)this.maxRnumericUpDown.Value; }
+        }
 
         //private int Propability
         //{
@@ -315,6 +315,36 @@ namespace TestMM
             }
 
             }
+
+        /*private void Load_Bitmap(object sender, EventArgs e)
+        {
+            Bitmap bmp = new Bitmap(Board.ClientSize.Width, Board.ClientSize.Height);
+            Board.DrawToBitmap(bmp, Board.ClientRectangle);
+            OpenFileDialog sf = new OpenFileDialog();
+            //sf.Filter = "BMP(*.BMP)|*.bmp";
+            if (sf.ShowDialog() == DialogResult.OK)
+            {
+                bmp.Open(sf.FileName, ImageFormat.Bmp);
+                //MessageBox.Show("Plik zostal pomyslnie zapisany");
+            }
+        }*/
+
+        private void addInclusionButton(object sender, EventArgs e)
+        {
+
+            
+            if (checkBox1.Checked)
+            {
+                this.ca.AddRandomInclusionsRec(this.Inclusions, this.InclusionsMinR, this.InclusionsMaxR);
+                MessageBox.Show("OOO");
+            }
+            else
+                this.ca.AddRandomInclusions(this.Inclusions, this.InclusionsMinR, this.InclusionsMaxR);
+
+
+            this.Board.Refresh();
+        }
+
     }
 
 }

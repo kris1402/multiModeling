@@ -46,13 +46,24 @@ namespace TestMM
             this.button1 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.maxRnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.minRnumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.InclusionsNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Board)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardWidthNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardHeightNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.caGrainsNumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maxRnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minRnumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InclusionsNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // Board
@@ -77,7 +88,7 @@ namespace TestMM
             this.BoardWidthNumericUpDown.Size = new System.Drawing.Size(69, 20);
             this.BoardWidthNumericUpDown.TabIndex = 1;
             this.BoardWidthNumericUpDown.Value = new decimal(new int[] {
-            500,
+            200,
             0,
             0,
             0});
@@ -94,7 +105,7 @@ namespace TestMM
             this.BoardHeightNumericUpDown.Size = new System.Drawing.Size(69, 20);
             this.BoardHeightNumericUpDown.TabIndex = 2;
             this.BoardHeightNumericUpDown.Value = new decimal(new int[] {
-            500,
+            200,
             0,
             0,
             0});
@@ -163,7 +174,7 @@ namespace TestMM
             // SelectButton
             // 
             this.SelectButton.BackColor = System.Drawing.SystemColors.Control;
-            this.SelectButton.Location = new System.Drawing.Point(38, 188);
+            this.SelectButton.Location = new System.Drawing.Point(416, 6);
             this.SelectButton.Name = "SelectButton";
             this.SelectButton.Size = new System.Drawing.Size(76, 23);
             this.SelectButton.TabIndex = 22;
@@ -175,7 +186,7 @@ namespace TestMM
             this.DPcheckBox.AutoSize = true;
             this.DPcheckBox.Checked = true;
             this.DPcheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.DPcheckBox.Location = new System.Drawing.Point(38, 146);
+            this.DPcheckBox.Location = new System.Drawing.Point(33, 82);
             this.DPcheckBox.Name = "DPcheckBox";
             this.DPcheckBox.Size = new System.Drawing.Size(81, 17);
             this.DPcheckBox.TabIndex = 23;
@@ -210,25 +221,25 @@ namespace TestMM
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(8, 257);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(146, 148);
+            this.groupBox1.Size = new System.Drawing.Size(146, 181);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Save";
             // 
-            // button2
+            // button4
             // 
-            this.button2.Location = new System.Drawing.Point(32, 68);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(99, 30);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Save as csv";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.save_as_csv_Click);
+            this.button4.Location = new System.Drawing.Point(30, 138);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(99, 30);
+            this.button4.TabIndex = 29;
+            this.button4.Text = "Upload Bitmap";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -240,11 +251,87 @@ namespace TestMM
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Upload_csv);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(32, 68);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(99, 30);
+            this.button2.TabIndex = 27;
+            this.button2.Text = "Save as csv";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.save_as_csv_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Controls.Add(this.maxRnumericUpDown);
+            this.groupBox2.Controls.Add(this.minRnumericUpDown);
+            this.groupBox2.Controls.Add(this.InclusionsNumericUpDown);
+            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Location = new System.Drawing.Point(14, 105);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(140, 146);
+            this.groupBox2.TabIndex = 28;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Inclusions";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(1, 57);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(46, 17);
+            this.checkBox1.TabIndex = 4;
+            this.checkBox1.Text = "Rec";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // maxRnumericUpDown
+            // 
+            this.maxRnumericUpDown.Location = new System.Drawing.Point(26, 120);
+            this.maxRnumericUpDown.Name = "maxRnumericUpDown";
+            this.maxRnumericUpDown.Size = new System.Drawing.Size(40, 20);
+            this.maxRnumericUpDown.TabIndex = 3;
+            this.maxRnumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // minRnumericUpDown
+            // 
+            this.minRnumericUpDown.Location = new System.Drawing.Point(26, 94);
+            this.minRnumericUpDown.Name = "minRnumericUpDown";
+            this.minRnumericUpDown.Size = new System.Drawing.Size(41, 20);
+            this.minRnumericUpDown.TabIndex = 2;
+            this.minRnumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // InclusionsNumericUpDown
+            // 
+            this.InclusionsNumericUpDown.Location = new System.Drawing.Point(0, 22);
+            this.InclusionsNumericUpDown.Name = "InclusionsNumericUpDown";
+            this.InclusionsNumericUpDown.Size = new System.Drawing.Size(47, 20);
+            this.InclusionsNumericUpDown.TabIndex = 1;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(53, 19);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 0;
+            this.button5.Text = "Add Inc";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.addInclusionButton);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(586, 450);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gridPeriodicCheckBox);
             this.Controls.Add(this.DPcheckBox);
@@ -265,6 +352,11 @@ namespace TestMM
             ((System.ComponentModel.ISupportInitialize)(this.BoardHeightNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.caGrainsNumericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maxRnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minRnumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InclusionsNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,6 +382,13 @@ namespace TestMM
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.NumericUpDown maxRnumericUpDown;
+        private System.Windows.Forms.NumericUpDown minRnumericUpDown;
+        private System.Windows.Forms.NumericUpDown InclusionsNumericUpDown;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

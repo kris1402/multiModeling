@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -90,6 +91,26 @@ namespace TestMM
 
         }
 
+        public void AddRandomInclusionsRec(int number, int min_r, int max_r)
+        {
+            Random rnd = new Random();
+            for (int i = 0; i < number; i++)
+            {
+                Cell c;
+                int temp_x = RandomHelper.Next(this.Width);
+                int temp_y = RandomHelper.Next(this.Height);
+
+                c = this.grid.GetCell(temp_x, temp_y);
+                c.ID = 1;
+                c.NewID = 1;
+
+                int r = rnd.Next(min_r, max_r);
+                /*Add ig while yhe check box is assigned*/
+                AddCircleInclusion(temp_x, temp_y, r);
+                //AddRectangleInclusion(temp_x, temp_y, r);
+            }
+        }
+                /*Adding random inclusion*/
         public void AddRandomInclusions(int number, int min_r, int max_r)
         {
             Random rnd = new Random();
@@ -104,15 +125,29 @@ namespace TestMM
                 c.NewID = 1;
 
                 int r = rnd.Next(min_r, max_r);
-                AddCircleInclusion(temp_x, temp_y, r);
+                /*Add ig while yhe check box is assigned*/
+                //AddCircleInclusion(temp_x, temp_y, r);
+                AddRectangleInclusion(temp_x, temp_y, r);
+                /*--------------------------------------*/
+                /*Bitmap bitmap = new Bitmap(Width, Height);
+                Graphics rec = Graphics.FromImage(bitmap);
+                rec.FillRectangle(Brushes.Red,10,20,1,1);*/
             }
         }
+        /*Adding random inclusion rectangle*/
+
+
 
         private bool isInCircle(int r, int y, int x)
         {
             return ((x * x) + (y * y)) <= r * r;
         }
-
+        /*--------------------------------------*/
+        private bool isInRectangle(int a , int y, int x)
+        {
+            return (Math.Abs(x) <= (a / 2) & Math.Abs(y) <= (a / 2));
+        }
+        /*--------------------------------------*/
         public void AddCircleInclusion(int x, int y, int r)
         {
             for (int i = y - r; i <= y + r; i++)
@@ -128,7 +163,25 @@ namespace TestMM
                 }
             }
         }
+        /*--------------------------------------*/
 
+        public void AddRectangleInclusion(int x, int y, int r)
+        {
+            for (int i = y - (r/2); i <= y + (r / 2); i++)
+            {
+                for (int j = x - (r / 2); j <= x + (r / 2); j++)
+                {
+
+                    if (isInRectangle((r / 2), Math.Abs(y - i), Math.Abs(x - j)) && i >= 0 && j >= 0 && this.Width > j && this.Height > i)
+                    {
+                        this.AddInclusion(i, j);
+                    }
+
+                }
+            }
+        }
+
+        /*--------------------------------------*/
         protected void AddInclusion(int x, int y)
         {
             Cell c = grid.GetCell(x, y);
