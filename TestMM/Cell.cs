@@ -91,19 +91,19 @@ namespace TestMM
             }
         }
 
-        //Nearest Moore same as VanNeuman
-        //public IEnumerable<Cell> FurtherMooreNeighborhood
-        //{
-        //    get
-        //    {
-        //        return new Cell[]
-        //        {
-        //      this.NeighborNW,
-        //      this.NeighborNE,
-        //      this.NeighborSW,
-        //      this.NeighborSE,
-        //        };
-        //    }
-        //}
+        //This is for future Moore Neighbourhood
+        public IEnumerable<Cell> FurtherMooreNeighborhood
+        {
+           get
+            {
+                return new Cell[]
+               {
+            this.NeighborNW,
+            this.NeighborNE,
+            this.NeighborSW,
+            this.NeighborSE,
+              };
+            }
+        }
     }
 }

@@ -91,7 +91,83 @@ namespace TestMM
 
         }
 
-        public void AddRandomInclusionsRec(int number, int min_r, int max_r)
+
+        /*Adding random inclusion on the bouneries*/
+        int lenx;
+        int leny;
+        public void AddRandomInclusionsTest(int number, int min_r, int max_r)
+        {
+            int length = 0;
+            Random rnd = new Random();
+            /*------------------------------*/
+            List<int> setX = new List<int>();
+            List<int> setY = new List<int>();
+            /*------------------------------*/
+
+            for (int y = 0; y < this.grid.Width - 1; ++y)
+            {
+                for (int x = 1; x < this.grid.Height; ++x)
+                {
+                    Cell c = this.grid.GetCell(x - 1, y);
+                    Cell c2 = this.grid.GetCell(x, y);
+                    Cell c3 = this.grid.GetCell(x, y + 1);
+
+                    if (c.ID > 1 && (c.ID != c2.ID || c.ID != c3.ID))
+                    {
+                        int temp_x = x;
+                        Console.WriteLine("X = " + temp_x);
+
+                        setX.Add(temp_x);
+                        lenx = setX.Count;
+
+                        foreach (int nam in setX)
+                        {
+                            Console.WriteLine("Tabela" + nam);
+                        }
+                        Console.WriteLine("Dlugosc = " + lenx);
+                        Console.WriteLine(setX);
+                        Console.WriteLine("Przerywnik 1");
+
+                        //c.ID = 1;
+                        //c.NewID = 1;
+
+
+
+                    }
+                    int temp_y = y;
+                    Console.WriteLine(setY);
+                    Console.WriteLine("Przerywnik 2");
+                    Console.WriteLine("Y = " + temp_y);
+                    setY.Add(temp_y);
+                    leny = setY.Count;
+                    Console.WriteLine(setY);
+                    Console.WriteLine("Przerywnik 2");
+
+
+                }
+
+            }
+            while (number > 0)
+            {
+                int index_x = rnd.Next(setX.Count);// pick a random index
+                Console.WriteLine("indeks" + index_x);
+                int xvx = setX[index_x]; // a random value taken from that list
+                int index_y = rnd.Next(setY.Count);// pick a random index
+                int xvy = setY[index_y]; // a random value taken from that list
+
+                //int xvx = rnd.Next(1, 100);
+                //int xvy = rnd.Next(1, 100);
+                Console.WriteLine(xvx);
+                Console.WriteLine(xvy);
+                Console.WriteLine("Przerywnik 3");
+
+                int r = rnd.Next(min_r, max_r);
+                AddCircleInclusion(xvx, xvy, r);
+                number--;
+            }
+        }
+
+            public void AddRandomInclusionsRec(int number, int min_r, int max_r)
         {
             Random rnd = new Random();
             for (int i = 0; i < number; i++)
@@ -181,14 +257,14 @@ namespace TestMM
             }
         }
 
-        /*--------------------------------------*/
+ 
         protected void AddInclusion(int x, int y)
         {
             Cell c = grid.GetCell(x, y);
             c.ID = 1;
             c.NewID = 1;
         }
-
+        /*-------------------------------------Inclusion-------------------------*/
         public async Task StartAsync(string name, PictureBox board, CancellationToken ct)
         {
             if (name.Equals("Moore"))
@@ -266,11 +342,137 @@ namespace TestMM
             }
             return false;
         }
+        /*--------------------------------------------------------------------------------------------*/
+
+        /********************STEP_OF_GBC*******************************/
+        public bool STEP_OF_GBC(int probability)
+        {
+            Random rnd = new Random();
+            int changeRule = 0;
+            this.grid.ResetCurrentCellPosition();
+            //iteration of the specific Cell position
+            do
+            {
+                //Checking if the cell is empty 
+                if (this.grid.CurrentCell.ID == 0)
+                {
+                    //Rule number 1
+                    int id = -1;
+                    int max = -1;
+                    var q = grid.CurrentCell.MoorNeighborhood.Where(n => !n.Selected).GroupBy(n => n.ID).Select(n => new { id = n.Key, Value = n.Count() }).ToList();
+                    for (int i = 0; i < q.Count; i++)
+                    {
+                        if (q[i].id == 0 || q[i].id == 1 || q[i].id == 2)
+                            continue;
+                        if (q[i].Value > max)
+                        {
+                            id = q[i].id;
+                            Console.WriteLine("Idik= " + id);
+                            
+                            max = q[i].Value;
+                            Console.WriteLine("Max VAlue= " + max);
+                        }
+
+                    }
+                    if (max >= 5 && id > 1)
+                    {
+                        ++changeRule;
+                        grid.CurrentCell.NewID = id;
+                        Console.WriteLine("--------------NEW ID_____________" + id);
+                        continue;
+                    }
+                    //Rule number 2
+                    id = -1;
+                    max = -1;
+                    q = grid.CurrentCell.VonNeumannNeighborhood.Where(n => !n.Selected).GroupBy(n => n.ID).Select(n => new { id = n.Key, Value = n.Count() }).ToList();
+                    for(int i = 0; i < q.Count; i++)
+                    {
+                        if (q[i].id == 0 || q[i].id == 1 || q[i].id == 2)
+                            continue;
+                        if (q[i].Value > max)
+                        {
+                            id = q[i].id;
+                            Console.WriteLine("Idik= " + id);
+
+                            max = q[i].Value;
+                            Console.WriteLine("Max VAlue= " + max);
+                        }
+                    }
+                    if(max >= 3 && id > 1)
+                    {
+                        ++changeRule;
+                        grid.CurrentCell.NewID = id;
+                        continue;
+                    }
+
+                    //Rule number 3
+                    id = -1;
+                    max = -1;
+
+                    q = grid.CurrentCell.FurtherMooreNeighborhood.Where(n => !n.Selected).GroupBy(n => n.ID).Select(n => new { id = n.Key, Value = n.Count() }).ToList();
+                    for (int i = 0; i < q.Count; i++)
+                    {
+                        if (q[i].id == 0 || q[i].id == 1 || q[i].id == 2)
+                            continue;
+                        if (q[i].Value > max)
+                        {
+                            id = q[i].id;
+                            Console.WriteLine("Idik= " + id);
+
+                            max = q[i].Value;
+                            Console.WriteLine("Max VAlue= " + max);
+                        }
+                    }
+                    if (max >= 3 && id > 1)
+                    {
+                        ++changeRule;
+                        grid.CurrentCell.NewID = id;
+                        continue;
+                    }
 
 
-        //======================================================================
 
-        public void StartSelectGrains(bool changeId)
+
+                    //Rule number 4 
+
+                    id = -1;
+                    max = -1;
+                    q = grid.CurrentCell.MoorNeighborhood.Where(n => !n.Selected).GroupBy(n => n.ID).Select(n => new { id = n.Key, Value = n.Count() }).ToList();
+                    for (int i = 0; i < q.Count; i++)
+                    {
+                        if (q[i].id == 0 || q[i].id == 1 || q[i].id == 2)
+                            continue;
+                        if (q[i].Value > max)
+                        {
+                            id = q[i].id;
+                            max = q[i].Value;
+                        }
+                    }
+                    int number = rnd.Next(0, 100);
+                    if (id > 1 && number < probability)
+                    {
+                        ++changeRule;
+                        grid.CurrentCell.NewID = id;
+                        continue;
+                    }
+
+
+                }
+            } while (this.grid.Next());
+
+            if (changeRule > 0)
+            {
+                //Copying values
+                this.grid.CopyNewIDtoID();
+                return true;
+            }
+            return false;
+        }
+        /********************STEP_OF_GBC******************************/
+
+        /********************SelectGrainFunctionality******************************/
+
+        public void SelectGrainsStart(bool changeId)
         {
             if (changeId)
             {
@@ -311,7 +513,7 @@ namespace TestMM
         }
 
 
-        public void EndSelectGrains()
+        public void SelectGrainsEnd()
         {
             this.grid.ResetCurrentCellPosition();
 
@@ -326,7 +528,7 @@ namespace TestMM
         }
 
 
-        //=====================================================================================================================
+        /********************SelectGrainFunctionality******************************/
 
 
         //For Moore
@@ -373,5 +575,7 @@ namespace TestMM
     }
 
 }
+
+
 
 

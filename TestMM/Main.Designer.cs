@@ -55,10 +55,18 @@ namespace TestMM
             this.InclusionsNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.numericUpDown_GBC = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.DualPhaseCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Board)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardWidthNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardHeightNumericUpDown)).BeginInit();
@@ -70,6 +78,9 @@ namespace TestMM
             ((System.ComponentModel.ISupportInitialize)(this.InclusionsNumericUpDown)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GBC)).BeginInit();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // Board
@@ -80,6 +91,7 @@ namespace TestMM
             this.Board.Size = new System.Drawing.Size(367, 336);
             this.Board.TabIndex = 0;
             this.Board.TabStop = false;
+            this.Board.Click += new System.EventHandler(this.Board_Click);
             this.Board.Paint += new System.Windows.Forms.PaintEventHandler(this.Board_Paint);
             // 
             // BoardWidthNumericUpDown
@@ -333,6 +345,15 @@ namespace TestMM
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Size";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 72);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 13);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Method";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -362,20 +383,100 @@ namespace TestMM
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Add Grains";
             // 
-            // label5
+            // button6
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 72);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 13);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "Method";
+            this.button6.Location = new System.Drawing.Point(488, 29);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(86, 35);
+            this.button6.TabIndex = 31;
+            this.button6.Text = "InclusionAfter";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.testowy);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.numericUpDown_GBC);
+            this.groupBox5.Controls.Add(this.label6);
+            this.groupBox5.Controls.Add(this.button7);
+            this.groupBox5.Location = new System.Drawing.Point(527, 91);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(151, 116);
+            this.groupBox5.TabIndex = 32;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "GBC";
+            // 
+            // numericUpDown_GBC
+            // 
+            this.numericUpDown_GBC.Location = new System.Drawing.Point(33, 35);
+            this.numericUpDown_GBC.Name = "numericUpDown_GBC";
+            this.numericUpDown_GBC.Size = new System.Drawing.Size(64, 20);
+            this.numericUpDown_GBC.TabIndex = 2;
+            this.numericUpDown_GBC.Value = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(127, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Probability Adjustment [%]";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(33, 63);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 0;
+            this.button7.Text = "Start";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.GBC_Simulate_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.button8);
+            this.groupBox6.Controls.Add(this.DualPhaseCheckBox);
+            this.groupBox6.Location = new System.Drawing.Point(527, 222);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(151, 151);
+            this.groupBox6.TabIndex = 33;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Structures";
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(21, 103);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 1;
+            this.button8.Text = "Select";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.DualStateButton_Click);
+            // 
+            // DualPhaseCheckBox
+            // 
+            this.DualPhaseCheckBox.AutoSize = true;
+            this.DualPhaseCheckBox.Checked = true;
+            this.DualPhaseCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.DualPhaseCheckBox.Location = new System.Drawing.Point(33, 45);
+            this.DualPhaseCheckBox.Name = "DualPhaseCheckBox";
+            this.DualPhaseCheckBox.Size = new System.Drawing.Size(81, 17);
+            this.DualPhaseCheckBox.TabIndex = 0;
+            this.DualPhaseCheckBox.Text = "Dual Phase";
+            this.DualPhaseCheckBox.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 450);
+            this.ClientSize = new System.Drawing.Size(684, 513);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gridPeriodicCheckBox);
@@ -385,7 +486,7 @@ namespace TestMM
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
             this.Name = "Main";
-            this.Text = "KK Form";
+            this.Text = "Form";
             ((System.ComponentModel.ISupportInitialize)(this.Board)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardWidthNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardHeightNumericUpDown)).EndInit();
@@ -399,6 +500,11 @@ namespace TestMM
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_GBC)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,6 +541,15 @@ namespace TestMM
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.NumericUpDown numericUpDown_GBC;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox DualPhaseCheckBox;
+        private System.Windows.Forms.Button button8;
+       //private System.Windows.Forms.Button SelectButton;
     }
 }
 

@@ -52,15 +52,15 @@ namespace TestMM
             get { return (int)this.maxRnumericUpDown.Value; }
         }
 
-        //private int Propability
-        //{
-        //    get { return (int)this.GBCnumericUpDown.Value; }
-        //}
-
-        /*private bool DPcheck
+        private int Probability
         {
-            get { return this.DPcheckBox.Checked; }
-        }*/
+            get { return (int)this.numericUpDown_GBC.Value; }
+        }
+
+        private bool dualPhaseCheck
+        {
+            get { return this.DualPhaseCheckBox.Checked; }
+        }
 
         private Grid grid;
         private AlgorithmCA ca;
@@ -68,9 +68,9 @@ namespace TestMM
         private Task t;
         private CancellationTokenSource tokenSource = new CancellationTokenSource();
 
-        //Storing all UI stateButtons
-        //private Dictionary<Button, EventsOfButton> stateButtons;
-        //private Button activeStateButton = null;
+        //State Button for UI
+        private Dictionary<Button, EventsOfButton> stateButtons;
+        private Button activeStateButton = null;
 
         public Main()
         {
@@ -80,7 +80,7 @@ namespace TestMM
             this.SetupUI();
             this.SetupBrushes();
             this.SetupGrid();
-            //this.SetupStateButtons();
+            this.SetupStateButtons();
             timer1.Interval = 100;
             this.timer1.Start();
             
@@ -122,23 +122,23 @@ namespace TestMM
             this.brushes.Insert(0, Brushes.Black);
         }
 
-        //private void SetupStateButtons()
-        //{
-        //    this.stateButtons = new Dictionary<Button, EventsOfButton>();
+        private void SetupStateButtons()
+        {
+            this.stateButtons = new Dictionary<Button, EventsOfButton>();
 
-        //    this.stateButtons.Add(this.SelectButton, new EventsOfButton { BoardClick = SelectGrain, On = SelectGrain_Start, Off = SelectGrain_End });
-        //}
+            this.stateButtons.Add(this.button8, new EventsOfButton { BoardClick = SelectGrain, On = selectGrainStart, Off = selectGrainEnd });
+        }
 
         private void Board_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.Clear(Color.Gray);
+            e.Graphics.Clear(Color.White);
 
             for (int y = 0; y < this.grid.Height; ++y)
             {
                 for (int x = 0; x < this.grid.Width; ++x)
                 {
                     Cell c = this.grid.GetCell(x, y);
-                    if (c.ID != 1)
+                    if (c.ID != 0)
                     {
                         e.Graphics.FillRectangle(this.brushes[c.ID], x, y, 1, 1);
                     }
@@ -171,26 +171,6 @@ namespace TestMM
             }, tokenSource.Token);
         }
 
-        private void SelectGrain_Start()
-        {
-            //this.ca.StartSelectGrains(this.DPcheck);
-            this.ca.StartSelectGrains(true);
-        }
-
-        private void SelectGrain(int x, int y)
-        {
-            this.ca.SelectGrain(x, y);
-            this.Board.Refresh();
-        }
-
-        private void SelectGrain_End()
-        {
-            this.ca.EndSelectGrains();
-            this.Board.Refresh();
-        }
-
-
-        //#endregion BoardClickLogic
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
@@ -198,8 +178,6 @@ namespace TestMM
             this.SetupGrid();
             this.SetupBoard();
         }
-
-
 
 
         //private void Board_Click(object sender, EventArgs e)
@@ -215,9 +193,6 @@ namespace TestMM
         //        this.Board.Refresh();
         //    }
         //}
-
-
-
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -336,6 +311,90 @@ namespace TestMM
             this.Board.Refresh();
         }
 
+        private void testowy(object sender, EventArgs e)
+        {
+            this.ca.AddRandomInclusionsTest(this.Inclusions, this.InclusionsMinR, this.InclusionsMaxR);
+            this.Board.Refresh();
+        }
+
+        private void GBC_Simulate_Click(object sender, EventArgs e)
+        {
+            int chance = Probability;
+            while (ca.STEP_OF_GBC(chance))
+            {
+                Board.Refresh();
+            }
+        }
+
+        //#region BoardClickLogic
+        /*-------------StateButton--------------------*/
+        private void Board_Click(object sender, EventArgs e)
+        {
+            MouseEventArgs me = (MouseEventArgs)e;
+            int x = me.X;
+            int y = me.Y;
+            Console.WriteLine("Board: x= y= " + x + y);
+
+            if (this.activeStateButton != null && this.stateButtons.ContainsKey(this.activeStateButton) && this.stateButtons[this.activeStateButton].BoardClick != null)
+            {
+                this.stateButtons[activeStateButton].BoardClick(x, y);
+                this.Board.Refresh();
+            }
+        }
+
+
+        private void DualStateButton_Click(object sender, EventArgs e)
+        {
+            foreach (Button btn in stateButtons.Keys)
+            {
+                btn.BackColor = SystemColors.Control;
+                btn.ForeColor = SystemColors.ControlText;
+            }
+            Button clickedButton = sender as Button;
+            //Logic for prevoius button 
+            if (this.activeStateButton != null && this.stateButtons.ContainsKey(this.activeStateButton) && this.stateButtons[this.activeStateButton].Off != null)
+            {
+                this.stateButtons[this.activeStateButton].Off();
+            }
+            //Clicking for the next button
+            if (this.activeStateButton != clickedButton)
+            {
+                this.activeStateButton = clickedButton;
+                clickedButton.BackColor = SystemColors.Highlight;
+                clickedButton.ForeColor = SystemColors.HighlightText;
+                //Logic
+                if(this.activeStateButton != null && stateButtons.ContainsKey(this.activeStateButton) && this.stateButtons[this.activeStateButton].On != null)
+                {
+                    this.stateButtons[this.activeStateButton].On();
+                    Console.WriteLine("OK");
+                }
+            }
+            //Optnio for unclicnig active Button
+            else
+            {
+                activeStateButton = null;
+            }
+        }
+        /******************SelectGrain**********************/
+        //Start to select particular grain
+        private void selectGrainStart()
+        {
+            this.ca.SelectGrainsStart(this.dualPhaseCheck);
+            Console.WriteLine("selectGrainStart 1");
+        }
+        private void SelectGrain(int x, int y)
+        {
+            this.ca.SelectGrain(x, y);
+            this.Board.Refresh();
+            Console.WriteLine("selectGrainStart 2");
+        }
+        private void selectGrainEnd()
+        {
+            this.ca.SelectGrainsEnd();
+            this.Board.Refresh();
+            Console.WriteLine("selectGrainStart 3");
+        }
+        /******************SelectGrain**********************/
     }
 
 }
