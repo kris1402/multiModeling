@@ -114,57 +114,33 @@ namespace TestMM
 
                     if (c.ID > 1 && (c.ID != c2.ID || c.ID != c3.ID))
                     {
+                        
                         int temp_x = x;
-                        Console.WriteLine("X = " + temp_x);
-
                         setX.Add(temp_x);
                         lenx = setX.Count;
-
-                        foreach (int nam in setX)
-                        {
-                            Console.WriteLine("Tabela" + nam);
-                        }
-                        Console.WriteLine("Dlugosc = " + lenx);
-                        Console.WriteLine(setX);
-                        Console.WriteLine("Przerywnik 1");
-
-                        //c.ID = 1;
-                        //c.NewID = 1;
-
-
+                        int temp_y = y;
+                        setY.Add(temp_y);
+                        leny = setY.Count;
 
                     }
-                    int temp_y = y;
-                    Console.WriteLine(setY);
-                    Console.WriteLine("Przerywnik 2");
-                    Console.WriteLine("Y = " + temp_y);
-                    setY.Add(temp_y);
-                    leny = setY.Count;
-                    Console.WriteLine(setY);
-                    Console.WriteLine("Przerywnik 2");
 
 
                 }
 
             }
+
             while (number > 0)
             {
                 int index_x = rnd.Next(setX.Count);// pick a random index
-                Console.WriteLine("indeks" + index_x);
+                //Console.WriteLine("indeks" + index_x);
                 int xvx = setX[index_x]; // a random value taken from that list
                 int index_y = rnd.Next(setY.Count);// pick a random index
-                int xvy = setY[index_y]; // a random value taken from that list
-
-                //int xvx = rnd.Next(1, 100);
-                //int xvy = rnd.Next(1, 100);
-                Console.WriteLine(xvx);
-                Console.WriteLine(xvy);
-                Console.WriteLine("Przerywnik 3");
-
+                int xvy = setY[index_x]; // a random value taken from that list
                 int r = rnd.Next(min_r, max_r);
-                AddCircleInclusion(xvx, xvy, r);
+                AddCircleInclusion(xvy, xvx, r);
                 number--;
             }
+
         }
 
             public void AddRandomInclusionsRec(int number, int min_r, int max_r)
