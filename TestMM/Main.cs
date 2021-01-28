@@ -330,6 +330,14 @@ namespace TestMM
             this.Board.Refresh();
         }
         /*Boundaries*/
+        /*--------------------------*/
+        private void clearBounderies_Click(object sender, EventArgs e)
+        {
+            this.ca.AddBoundariesTest();
+            this.Board.Refresh();
+        }
+
+        /*--------------------------*/
 
         private void GBC_Simulate_Click(object sender, EventArgs e)
         {
@@ -409,7 +417,7 @@ namespace TestMM
             Console.WriteLine("selectGrainStart 3");
         }
 
-
+   
 
         /******************SelectGrain**********************/
     }

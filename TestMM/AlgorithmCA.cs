@@ -191,6 +191,29 @@ namespace TestMM
 
         }
 
+        public void AddBoundariesTest()
+        {
+            int length = 0;
+            for (int y = 0; y < this.grid.Width - 1; ++y)
+            {
+                for (int x = 1; x < this.grid.Height; ++x)
+                {
+                    Cell c = this.grid.GetCell(x - 1, y);
+                    Cell c2 = this.grid.GetCell(x, y);
+                    Console.WriteLine("c2 = " + c2);
+                    Cell c3 = this.grid.GetCell(x, y + 1);
+
+                    if (c.ID != 1)//&& (c.ID != c2.ID || c.ID != c3.ID)
+                    {
+                        c.ID = 0;
+                        c.NewID = 0;
+                        length++;
+                    }
+
+                }
+            }
+        }
+
 
         public void AddRandomInclusionsRec(int number, int min_r, int max_r)
         {
@@ -566,7 +589,7 @@ namespace TestMM
                     Console.WriteLine("c2 = " + c2);
                     Cell c3 = this.grid.GetCell(x, y + 1);
 
-                    if (c.ID > 1 && (c.ID != c2.ID || c.ID != c3.ID))
+                    if ((c.ID > 1 || c.ID == 0) && (c.ID != c2.ID || c.ID != c3.ID))
                     {
                         c.ID = 1;
                         c.NewID = 1;
@@ -576,6 +599,7 @@ namespace TestMM
                 }
             }
         }
+
         /********************AddingBounaries******************************/
 
         /********************SelectGrainFunctionality******************************/

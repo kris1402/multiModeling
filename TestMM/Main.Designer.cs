@@ -70,6 +70,8 @@ namespace TestMM
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.boundariesButton = new System.Windows.Forms.Button();
+            this.clearBounderies = new System.Windows.Forms.Button();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Board)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardWidthNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardHeightNumericUpDown)).BeginInit();
@@ -92,7 +94,7 @@ namespace TestMM
             this.Board.BackColor = System.Drawing.Color.White;
             this.Board.Location = new System.Drawing.Point(154, 91);
             this.Board.Name = "Board";
-            this.Board.Size = new System.Drawing.Size(367, 336);
+            this.Board.Size = new System.Drawing.Size(366, 336);
             this.Board.TabIndex = 0;
             this.Board.TabStop = false;
             this.Board.Click += new System.EventHandler(this.Board_Click);
@@ -110,7 +112,7 @@ namespace TestMM
             this.BoardWidthNumericUpDown.Size = new System.Drawing.Size(69, 20);
             this.BoardWidthNumericUpDown.TabIndex = 1;
             this.BoardWidthNumericUpDown.Value = new decimal(new int[] {
-            200,
+            300,
             0,
             0,
             0});
@@ -127,7 +129,7 @@ namespace TestMM
             this.BoardHeightNumericUpDown.Size = new System.Drawing.Size(69, 20);
             this.BoardHeightNumericUpDown.TabIndex = 2;
             this.BoardHeightNumericUpDown.Value = new decimal(new int[] {
-            200,
+            300,
             0,
             0,
             0});
@@ -187,9 +189,9 @@ namespace TestMM
             this.gridPeriodicCheckBox.AutoSize = true;
             this.gridPeriodicCheckBox.Location = new System.Drawing.Point(160, 53);
             this.gridPeriodicCheckBox.Name = "gridPeriodicCheckBox";
-            this.gridPeriodicCheckBox.Size = new System.Drawing.Size(84, 17);
+            this.gridPeriodicCheckBox.Size = new System.Drawing.Size(72, 17);
             this.gridPeriodicCheckBox.TabIndex = 25;
-            this.gridPeriodicCheckBox.Text = "Periodyczne";
+            this.gridPeriodicCheckBox.Text = "Periodical";
             this.gridPeriodicCheckBox.UseVisualStyleBackColor = true;
             // 
             // timer1
@@ -199,7 +201,7 @@ namespace TestMM
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(21, 25);
+            this.button1.Location = new System.Drawing.Point(21, 15);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(99, 30);
             this.button1.TabIndex = 26;
@@ -213,16 +215,16 @@ namespace TestMM
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(527, 256);
+            this.groupBox1.Location = new System.Drawing.Point(527, 255);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(150, 171);
+            this.groupBox1.Size = new System.Drawing.Size(150, 172);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Save";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(21, 133);
+            this.button4.Location = new System.Drawing.Point(21, 123);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(99, 30);
             this.button4.TabIndex = 29;
@@ -231,7 +233,7 @@ namespace TestMM
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(21, 97);
+            this.button3.Location = new System.Drawing.Point(21, 87);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(99, 30);
             this.button3.TabIndex = 28;
@@ -241,7 +243,7 @@ namespace TestMM
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(21, 61);
+            this.button2.Location = new System.Drawing.Point(21, 51);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(99, 30);
             this.button2.TabIndex = 27;
@@ -262,7 +264,7 @@ namespace TestMM
             this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Location = new System.Drawing.Point(8, 130);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(140, 222);
+            this.groupBox2.Size = new System.Drawing.Size(140, 210);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Inclusions";
@@ -299,7 +301,7 @@ namespace TestMM
             // 
             this.button6.Location = new System.Drawing.Point(21, 165);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(89, 40);
+            this.button6.Size = new System.Drawing.Size(90, 30);
             this.button6.TabIndex = 31;
             this.button6.Text = "Inclusion After";
             this.button6.UseVisualStyleBackColor = true;
@@ -394,7 +396,7 @@ namespace TestMM
             this.groupBox4.Controls.Add(this.caAddRandomGrainsButton);
             this.groupBox4.Location = new System.Drawing.Point(154, 9);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(191, 70);
+            this.groupBox4.Size = new System.Drawing.Size(190, 70);
             this.groupBox4.TabIndex = 30;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Add Grains";
@@ -415,7 +417,7 @@ namespace TestMM
             // 
             this.numericUpDown_GBC.Location = new System.Drawing.Point(37, 34);
             this.numericUpDown_GBC.Name = "numericUpDown_GBC";
-            this.numericUpDown_GBC.Size = new System.Drawing.Size(64, 20);
+            this.numericUpDown_GBC.Size = new System.Drawing.Size(65, 20);
             this.numericUpDown_GBC.TabIndex = 2;
             this.numericUpDown_GBC.Value = new decimal(new int[] {
             80,
@@ -444,20 +446,21 @@ namespace TestMM
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.checkBox2);
             this.groupBox6.Controls.Add(this.button8);
             this.groupBox6.Controls.Add(this.DualPhaseCheckBox);
             this.groupBox6.Location = new System.Drawing.Point(527, 124);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(150, 80);
+            this.groupBox6.Size = new System.Drawing.Size(150, 125);
             this.groupBox6.TabIndex = 33;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Structures";
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(29, 42);
+            this.button8.Location = new System.Drawing.Point(26, 69);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.Size = new System.Drawing.Size(81, 34);
             this.button8.TabIndex = 1;
             this.button8.Text = "Select";
             this.button8.UseVisualStyleBackColor = true;
@@ -468,7 +471,7 @@ namespace TestMM
             this.DualPhaseCheckBox.AutoSize = true;
             this.DualPhaseCheckBox.Checked = true;
             this.DualPhaseCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.DualPhaseCheckBox.Location = new System.Drawing.Point(26, 19);
+            this.DualPhaseCheckBox.Location = new System.Drawing.Point(26, 46);
             this.DualPhaseCheckBox.Name = "DualPhaseCheckBox";
             this.DualPhaseCheckBox.Size = new System.Drawing.Size(81, 17);
             this.DualPhaseCheckBox.TabIndex = 0;
@@ -486,23 +489,44 @@ namespace TestMM
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.clearBounderies);
             this.groupBox7.Controls.Add(this.boundariesButton);
-            this.groupBox7.Location = new System.Drawing.Point(529, 203);
+            this.groupBox7.Location = new System.Drawing.Point(8, 342);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(150, 47);
+            this.groupBox7.Size = new System.Drawing.Size(140, 85);
             this.groupBox7.TabIndex = 34;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Boundaries";
             // 
             // boundariesButton
             // 
-            this.boundariesButton.Location = new System.Drawing.Point(27, 19);
+            this.boundariesButton.Location = new System.Drawing.Point(6, 36);
             this.boundariesButton.Name = "boundariesButton";
-            this.boundariesButton.Size = new System.Drawing.Size(75, 23);
+            this.boundariesButton.Size = new System.Drawing.Size(60, 25);
             this.boundariesButton.TabIndex = 0;
-            this.boundariesButton.Text = "Boundaries";
+            this.boundariesButton.Text = "ON";
             this.boundariesButton.UseVisualStyleBackColor = true;
             this.boundariesButton.Click += new System.EventHandler(this.boundariesButton_Click);
+            // 
+            // clearBounderies
+            // 
+            this.clearBounderies.Location = new System.Drawing.Point(74, 36);
+            this.clearBounderies.Name = "clearBounderies";
+            this.clearBounderies.Size = new System.Drawing.Size(60, 25);
+            this.clearBounderies.TabIndex = 35;
+            this.clearBounderies.Text = "Clear";
+            this.clearBounderies.UseVisualStyleBackColor = true;
+            this.clearBounderies.Click += new System.EventHandler(this.clearBounderies_Click);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(26, 19);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(86, 17);
+            this.checkBox2.TabIndex = 2;
+            this.checkBox2.Text = "Substructure";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
@@ -588,6 +612,8 @@ namespace TestMM
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button boundariesButton;
+        private System.Windows.Forms.Button clearBounderies;
+        private System.Windows.Forms.CheckBox checkBox2;
         //private System.Windows.Forms.Button SelectButton;
     }
 }
