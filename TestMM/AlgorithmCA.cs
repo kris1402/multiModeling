@@ -143,7 +143,56 @@ namespace TestMM
 
         }
 
-            public void AddRandomInclusionsRec(int number, int min_r, int max_r)
+        public void AddRandomInclusionsTestRec(int number, int min_r, int max_r)
+        {
+            int length = 0;
+            Random rnd = new Random();
+            /*------------------------------*/
+            List<int> setX = new List<int>();
+            List<int> setY = new List<int>();
+            /*------------------------------*/
+
+            for (int y = 0; y < this.grid.Width - 1; ++y)
+            {
+                for (int x = 1; x < this.grid.Height; ++x)
+                {
+                    Cell c = this.grid.GetCell(x - 1, y);
+                    Cell c2 = this.grid.GetCell(x, y);
+                    Cell c3 = this.grid.GetCell(x, y + 1);
+
+                    if (c.ID > 1 && (c.ID != c2.ID || c.ID != c3.ID))
+                    {
+
+                        int temp_x = x;
+                        setX.Add(temp_x);
+                        lenx = setX.Count;
+                        int temp_y = y;
+                        setY.Add(temp_y);
+                        leny = setY.Count;
+
+                    }
+
+
+                }
+
+            }
+
+            while (number > 0)
+            {
+                int index_x = rnd.Next(setX.Count);// pick a random index
+                //Console.WriteLine("indeks" + index_x);
+                int xvx = setX[index_x]; // a random value taken from that list
+                int index_y = rnd.Next(setY.Count);// pick a random index
+                int xvy = setY[index_x]; // a random value taken from that list
+                int r = rnd.Next(min_r, max_r);
+                AddRectangleInclusion(xvy, xvx, r);
+                number--;
+            }
+
+        }
+
+
+        public void AddRandomInclusionsRec(int number, int min_r, int max_r)
         {
             Random rnd = new Random();
             for (int i = 0; i < number; i++)
@@ -159,6 +208,7 @@ namespace TestMM
                 int r = rnd.Next(min_r, max_r);
                 /*Add ig while yhe check box is assigned*/
                 AddCircleInclusion(temp_x, temp_y, r);
+
                 //AddRectangleInclusion(temp_x, temp_y, r);
             }
         }
@@ -503,6 +553,30 @@ namespace TestMM
             } while (this.grid.Next());
         }
 
+        /********************AddingBounaries******************************/
+        public void AddBoundaries()
+        {
+            int length = 0;
+            for (int y = 0; y < this.grid.Width - 1; ++y)
+            {
+                for (int x = 1; x < this.grid.Height; ++x)
+                {
+                    Cell c = this.grid.GetCell(x - 1, y);
+                    Cell c2 = this.grid.GetCell(x, y);
+                    Console.WriteLine("c2 = " + c2);
+                    Cell c3 = this.grid.GetCell(x, y + 1);
+
+                    if (c.ID > 1 && (c.ID != c2.ID || c.ID != c3.ID))
+                    {
+                        c.ID = 1;
+                        c.NewID = 1;
+                        length++;
+                    }
+
+                }
+            }
+        }
+        /********************AddingBounaries******************************/
 
         /********************SelectGrainFunctionality******************************/
 

@@ -313,9 +313,23 @@ namespace TestMM
 
         private void testowy(object sender, EventArgs e)
         {
-            this.ca.AddRandomInclusionsTest(this.Inclusions, this.InclusionsMinR, this.InclusionsMaxR);
+            
+            if (checkBox1.Checked)
+            {
+                this.ca.AddRandomInclusionsTestRec(this.Inclusions, this.InclusionsMinR, this.InclusionsMaxR);
+            }
+            else
+                this.ca.AddRandomInclusionsTest(this.Inclusions, this.InclusionsMinR, this.InclusionsMaxR);
             this.Board.Refresh();
         }
+
+        /*Boundaries*/
+        private void boundariesButton_Click(object sender, EventArgs e)
+        {
+            this.ca.AddBoundaries();
+            this.Board.Refresh();
+        }
+        /*Boundaries*/
 
         private void GBC_Simulate_Click(object sender, EventArgs e)
         {
@@ -394,6 +408,9 @@ namespace TestMM
             this.Board.Refresh();
             Console.WriteLine("selectGrainStart 3");
         }
+
+
+
         /******************SelectGrain**********************/
     }
 
